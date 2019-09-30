@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" autoUpload="Always" serverName="root@[2001:da8:20c:506:d552:99a4:c590:37c8]:22" autoUploadExternalChanges="true">
+    <serverData>
+      <paths name="root@[2001:da8:20c:506:d552:99a4:c590:37c8]:22">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/root/Dive_into_deep_learninng_pytorch" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+    <option name="myAutoUpload" value="ALWAYS" />
+  </component>
+</project>
