@@ -9,6 +9,14 @@
           </mappings>
         </serverdata>
       </paths>
+      <paths name="centos">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$/../learning_python_5th_edition" web="/" />
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
       <paths name="chent@[2001:da8:20c:506:d89c:2d91:e7cc:3594]:22">
         <serverdata>
           <mappings>
@@ -19,7 +27,7 @@
       <paths name="root@[2001:da8:20c:506:d552:99a4:c590:37c8]:22">
         <serverdata>
           <mappings>
-            <mapping deploy="/root/Dive_into_deep_learninng_pytorch" local="$PROJECT_DIR$" />
+            <mapping deploy="/root/learning_python_5th_edition" local="$PROJECT_DIR$/../learning_python_5th_edition" web="/" />
           </mappings>
         </serverdata>
       </paths>
