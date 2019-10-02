@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="34a49b1b-e08f-43b7-9696-b6c0ceec46fa" name="2080ti" url="http://[2001:da8:20c:506:d89c:2d91:e7cc:3594]">
+        <fileTransfer host="[2001:da8:20c:506:d89c:2d91:e7cc:3594]" port="22" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="3edb349a-8844-40f7-8ac7-f6c7f5b6ada1" name="root@[2001:da8:20c:506:d552:99a4:c590:37c8]:22" url="http:///">
+        <fileTransfer host="[2001:da8:20c:506:d552:99a4:c590:37c8]" port="22" accessType="SFTP">
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
