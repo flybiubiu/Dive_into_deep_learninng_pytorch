@@ -3,6 +3,7 @@ from IPython import display
 from matplotlib import pyplot as plt
 import numpy as np
 import random
+import sys
 
 
 
@@ -24,9 +25,9 @@ def set_figsize(figsize = (3.5, 2.5)):
 
 set_figsize()
 plt.scatter(features[:, 1].numpy(), labels.numpy(), 1)#1代表标量
-plt.savefig("one_dimensional_label.jpg")#打印第二个特征features[:, 1]和标签labels的线性关系
+plt.savefig("./Linear_Neural_Networks/one_dimensional_label.jpg")#打印第二个特征features[:, 1]和标签labels的线性关系
 plt.scatter(features[:, 0].numpy(), labels.numpy(), 1)#1代表标量
-plt.savefig("two_dimensional_label.jpg")#打印第二个特征features[:, 1]和标签labels的线性关系
+plt.savefig("./Linear_Neural_Networks/two_dimensional_label.jpg")#打印第二个特征features[:, 1]和标签labels的线性关系
 
 def data_iter(batch_size, features, labels):
     num_examples = len(features)
