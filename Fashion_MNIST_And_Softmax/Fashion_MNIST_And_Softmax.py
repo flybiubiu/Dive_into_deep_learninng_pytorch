@@ -96,6 +96,57 @@ def evaluate_accuracy(data_iter, net):
     return acc_sum / n
 print ("init evaluate_accuray: ", evaluate_accuracy(test_iter, net))
 
-def sgd(parans, lr, batch_size):
+def sgd(params, lr, batch_size):
     for param in params:
-        param.data -= lr * param.grad / batch_size
+        param.data -= lr * param.grad / batch_size#这里更改param时用的param.data，避免被'autograd'记录从而影响到梯度反向传播,我们将它初一批量大小来得到平均值
+num_epochs, lr = 5, 0.1
+def train_ch3(net, train_iter, test_iter, loss, num_epochs, batch_size, params = None, lr = None, optimizer = None):
+    for epoch in range(num_epochs):
+        train_l_sum, train_acc_sum, n = 0.0, 0.0, 0
+        for X, y in train_iter:
+            y_hat = net(X)
+            l = loss(y_hat, y).sum()
+            #梯度清零
+            if optimizer is not None:
+                optimizer.zero_grad()
+            elif params is not None and params[0].grad is not None:
+                for param in params:
+                    param.grad.data.zero_()
+            l.backward()
+            if optimizer is None:
+                sgd(params, lr, batch_size)
+            else:
+                optimizer.step()
+            train_l_sum += l.item()
+            train_acc_sum += (y_hat.argmax(dim = 1) == y.squeeze(1)).sum().item()
+            n += y.shape[0]
+        test_acc = evaluate_accuracy(test_iter, net)
+        print ('epoch %d, loss %.4f, train acc %.3f, test acc %.3f' % (epoch + 1, train_l_sum / n, train_acc_sum / n, test_acc))
+train_ch3(net, train_iter, test_iter, cross_entropy, num_epochs, batch_size, [W, b], lr)
+
+def get_fashion_mnist_labels(labels):
+    text_labels = ['t-shirt', 'trouser', 'pullover', 'dress', 'coat', 'sandal', 'shirt', 'sneaker', 'bag', 'ankle boot']
+    return [text_labels[int(i)] for i in labels]
+from IPython import display
+from matplotlib import pyplot as plt
+def use_svg_display():
+    display.set_matplotlib_formats('svg')
+def show_fashion_mnist(images, labels):
+    """ 该函数在一行里画出多张图像和对应标签 """
+    use_svg_display()
+    # 这里的_表示我们忽略（不使用）的变量
+    _, figs = plt.subplots(1, len(images), figsize=(12, 12))
+    for f, img, lbl in zip(figs, images, labels):
+        f.imshow(img.view((28, 28)).numpy())
+        f.set_title(lbl)
+        f.axes.get_xaxis().set_visible(False)
+        f.axes.get_yaxis().set_visible(False)
+    plt.savefig("./predicted.jpg")
+# 预测
+X, y = iter(test_iter).next()
+true_labels = get_fashion_mnist_labels(y.numpy())
+pred_labels = get_fashion_mnist_labels(net(X).argmax(dim=1).numpy())
+titles = [true + '\n' + pred for true, pred in zip(true_labels, pred_labels)]
+
+# 画前10个预测结果
+show_fashion_mnist(X[0:9], titles[0:9])
