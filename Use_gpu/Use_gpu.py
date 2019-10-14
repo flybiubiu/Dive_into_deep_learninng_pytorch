@@ -1,0 +1,22 @@
+import torch
+from torch import nn
+print (torch.cuda.is_available())
+print (torch.cuda.device_count())
+torch.cuda.set_device(3)
+print (torch.cuda.current_device())
+x = torch.tensor([1, 2, 3])
+print (x)
+x = x.cuda(3)
+print (x)
+print (x.device)
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+x  = torch.tensor([1, 2, 3], device = device)
+print (x)
+y = x ** 2
+print (y)
+net = nn.Linear(3, 1)
+print (list(net.parameters())[0].device)
+net.cuda()
+print (list(net.parameters())[0].device)
+x = torch.rand(2, 3).cuda()
+print (net(x))
