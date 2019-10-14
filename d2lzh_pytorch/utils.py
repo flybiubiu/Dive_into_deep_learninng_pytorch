@@ -201,7 +201,7 @@ def corr2d(X, K):
 
 
 # ############################ 5.5 #########################
-'''
+
 def evaluate_accuracy(data_iter, net, 
         device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')):
     acc_sum, n = 0.0, 0
@@ -226,7 +226,7 @@ def evaluate_accuracy(data_iter, net):
         acc_sum += (net(X).argmax(dim = 1) == y).float().mean().item()#squeeze转换为秩为1
         n += y.shape[0]#第行的长度
     return acc_sum / n
-
+'''
 def train_ch5(net, train_iter, test_iter, batch_size, optimizer, device, num_epochs):
     net = net.to(device)
     print("training on ", device)
