@@ -43,3 +43,6 @@ for i in range(step):
     conv2d.bias.grad.fill_(0)
     if(i + 1) % 5 == 0:
         print ('Step %d, loss %.3f' % (i + 1, l.item()))
+
+print ("weight: ", conv2d.weight.data)
+print ("bias: ",conv2d.bias.data)
