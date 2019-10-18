@@ -266,7 +266,7 @@ def load_data_fashion_mnist(batch_size, resize=None, root='~/Datasets/FashionMNI
     if sys.platform.startswith('win'):
         num_workers = 0  # 0表示不用额外的进程来加速读取数据
     else:
-        num_workers = 4
+        num_workers = 16
     train_iter = torch.utils.data.DataLoader(mnist_train, batch_size=batch_size, shuffle=True, num_workers=num_workers)
     test_iter = torch.utils.data.DataLoader(mnist_test, batch_size=batch_size, shuffle=False, num_workers=num_workers)
 
