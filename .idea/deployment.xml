@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="chent@[2001:da8:20c:506:d89c:2d91:e7cc:3594]:22" showDialogOnRemoteDnD="false" autoUploadExternalChanges="true" showDifferentInSync="false">
+  <component name="PublishConfigData" autoUpload="Always" serverName="chent@121.195.169.224:22" showDialogOnRemoteDnD="false" autoUploadExternalChanges="true" showDifferentInSync="false">
     <serverData>
       <paths name="2080ti">
         <serverdata>
@@ -17,7 +17,7 @@
           </mappings>
         </serverdata>
       </paths>
-      <paths name="chent@[2001:da8:20c:506:d89c:2d91:e7cc:3594]:22">
+      <paths name="chent@121.195.169.224:22">
         <serverdata>
           <mappings>
             <mapping deploy="/home/chent/Dive_into_deep_learninng_pytorch" local="$PROJECT_DIR$" web="/" />
