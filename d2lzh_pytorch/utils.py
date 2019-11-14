@@ -576,12 +576,14 @@ def train_2d(trainer):
     print('epoch %d, x1 %f, x2 %f' % (i + 1, x1, x2))
     return results
 
-def show_trace_2d(f, results):  
+def show_trace_2d(f, results, eta, gamma=0):
     plt.plot(*zip(*results), '-o', color='#ff7f0e')
     x1, x2 = np.meshgrid(np.arange(-5.5, 1.0, 0.1), np.arange(-3.0, 1.0, 0.1))
     plt.contour(x1, x2, f(x1, x2), colors='#1f77b4')
     plt.xlabel('x1')
     plt.ylabel('x2')
+    plt.savefig(str(eta) + str(gamma) + 'trace.jpg')
+    plt.cla()
 
 
 
@@ -629,6 +631,8 @@ def train_ch7(optimizer_fn, states, hyperparams, features, labels,
     plt.plot(np.linspace(0, num_epochs, len(ls)), ls)
     plt.xlabel('epoch')
     plt.ylabel('loss')
+    plt.savefig(str(hyperparams['momentum']) + '.jpg')
+    plt.cla()
 
 # 本函数与原书不同的是这里第一个参数优化器函数而不是优化器的名字
 # 例如: optimizer_fn=torch.optim.SGD, optimizer_hyperparams={"lr": 0.05}
@@ -693,6 +697,7 @@ def show_images(imgs, num_rows, num_cols, scale=2):
             axes[i][j].imshow(imgs[i * num_cols + j])
             axes[i][j].axes.get_xaxis().set_visible(False)
             axes[i][j].axes.get_yaxis().set_visible(False)
+    plt.savefig('imgs.jpg')
     return axes
 
 def train(train_iter, test_iter, net, loss, optimizer, device, num_epochs):
